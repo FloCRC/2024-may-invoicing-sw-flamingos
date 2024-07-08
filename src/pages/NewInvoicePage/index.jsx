@@ -6,11 +6,8 @@ import { Link } from "react-router-dom";
 export default function NewInvoicePage() {
 
     const [list, setList] = useState([{ quantity: 0, rate: 0, total: 0, description: '' }]);
-
     const [clientId, setClientId] = useState('')
-
     const [message, setMessage] = useState('')
-
     const [buttonDisplay, setButtonDisplay] = useState('')
 
     function addItem() {

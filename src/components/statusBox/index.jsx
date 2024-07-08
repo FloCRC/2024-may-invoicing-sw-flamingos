@@ -36,7 +36,7 @@ export default function StatusBox({ invoiceStatus, invoiceDue }) {
         <li className="py-1 px-3 text-yellow-400">&#x2022; {invoiceStatus}</li></ul>
 
     return (
-        <div className="min-[760px]:mb-2">
+        <div className="mb-2">
             {invoiceStatus === 'Paid' ? paid :
                 invoiceStatus === 'Cancelled' ? cancelled :
                     invoiceStatus === 'Pending' && dateDue < todayDateParsed ? overdue : pending

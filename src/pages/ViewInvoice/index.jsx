@@ -117,9 +117,9 @@ export default function ViewInvoice() {
                         <p>Rate</p>
                         <p>Total</p>
                     </div>
-                    {details.map(detail => {
+                    {details.map((detail, index) => {
                         return (
-                            <InvoiceDetails key={invoiceid} desc={detail.description} quant={detail.quantity} cost={detail.rate} subTotal={detail.total} paidToDate={paidToDate} />
+                            <InvoiceDetails key={index} desc={detail.description} quant={detail.quantity} cost={detail.rate} subTotal={detail.total} paidToDate={paidToDate} />
                         )
                     })}
                     <div className="grid grid-cols-[4fr_1fr_1fr] border-b border-slate-500">

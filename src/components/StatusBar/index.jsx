@@ -51,7 +51,7 @@ export default function StatusBar({ invoiceStatus, invoiceDue, invoiceTotal, pai
     </div>
 
     return (
-        <div className="min-[760px]:mb-2">
+        <div className="mb-2">
 
             {invoiceStatus === 'Paid' ? paid :
                 invoiceStatus === 'Cancelled' ? cancelled :

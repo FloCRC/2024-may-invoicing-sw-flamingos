@@ -9,6 +9,16 @@ export default function NewInvoiceDetails({clientState}) {
     const formattedDueDate = next30DaysDate.toLocaleDateString('en-uk');
     const formattedDate = now.toLocaleDateString('en-uk')
 
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    const splitDate = formattedDate.split('/')
+    const splitDueDate = formattedDueDate.split('/')
+    const month = splitDate[1] - 1
+    const monthDue = splitDueDate[1] - 1
+    const wordMonth = monthNames[month]
+    const wordMonthDue = monthNames[monthDue]
+    const newDate = `${splitDate[0]} ${wordMonth} ${splitDate[2]}`
+    const newDueDate = `${splitDueDate[0]} ${wordMonthDue} ${splitDueDate[2]}`
+
     const [clients, setClients] = useState([])
 
     useEffect(() => {
@@ -41,11 +51,11 @@ export default function NewInvoiceDetails({clientState}) {
                 </div>
                 <div>
                     <p>Created</p>
-                    <p>{formattedDate}</p>
+                    <p>{newDate}</p>
                 </div>
                 <div>
                     <p>Due</p>
-                    <p>{formattedDueDate}</p>
+                    <p>{newDueDate}</p>
                 </div>
             </div>
         </div>
