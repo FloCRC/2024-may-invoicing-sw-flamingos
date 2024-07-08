@@ -34,7 +34,7 @@ export default function ViewInvoice() {
                 setInvoiceTotal(parseInt(invoice.data.invoice_total))
                 setInvoiceNumber(invoice.data.invoice_id)
             })
-    }, [])
+    }, [status])
 
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
     const splitCreatedDate = dateCreated.split('-')
@@ -47,10 +47,10 @@ export default function ViewInvoice() {
     const newDueDate = `${splitDate[2]} ${wordMonthDue} ${splitDate[0]}`
 
     function markPaid() {
-        setStatus('Paid')
+        let paidStat = 'Paid'
         fetch(`https://invoicing-api.dev.io-academy.uk/invoices/${invoiceid}`, {
             method: "PUT",
-            body: JSON.stringify(status),
+            body: JSON.stringify(paidStat),
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -58,15 +58,15 @@ export default function ViewInvoice() {
         }).then(res => {
             res.json()
         }).then(data => {
-
+            setStatus('Paid')
         })
     }
 
     function cancelInv() {
-        setStatus('Cancelled')
+        let cancStat = 'Cancelled'
         fetch(`https://invoicing-api.dev.io-academy.uk/invoices/${invoiceid}`, {
             method: "DELETE",
-            body: JSON.stringify(status),
+            body: JSON.stringify(cancStat),
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
@@ -74,7 +74,7 @@ export default function ViewInvoice() {
         }).then(res => {
             res.json()
         }).then(data => {
-
+            setStatus('Cancelled')
         })
     }
 
