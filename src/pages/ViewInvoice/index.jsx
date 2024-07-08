@@ -46,6 +46,43 @@ export default function ViewInvoice() {
     const wordMonthDue = monthNames[monthDue]
     const newDueDate = `${splitDate[2]} ${wordMonthDue} ${splitDate[0]}`
 
+    function markPaid() {
+        let paidStatus = 'Paid'
+        fetch(`https://invoicing-api.dev.io-academy.uk/invoices/${invoiceid}`, {
+            method: "PUT",
+            body: JSON.stringify(paidStatus),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }).then(res => {
+            res.json()
+        }).then(data => {
+            setStatus(paidStatus)
+        })
+    }
+
+    function cancelInv() {
+        let cancelledStatus = 'Cancelled'
+        fetch(`https://invoicing-api.dev.io-academy.uk/invoices/${invoiceid}`, {
+            method: "DELETE",
+            body: JSON.stringify(cancelledStatus),
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }).then(res => {
+            res.json()
+        }).then(data => {
+            setStatus(cancelledStatus)
+        })
+    }
+
+    const cancelButton = <button onClick={cancelInv} className="bg-red-400 text-white p-2 ml-2 rounded hover:opacity-50">Cancel Invoice</button>;
+    const disabledCancelButton = <div className="bg-red-400 text-white p-2 ml-2 rounded opacity-50">Cancel Invoice</div>;
+    const paidButton = <button onClick={markPaid} className="bg-green-400 text-white p-2 rounded hover:opacity-50">Mark as Paid</button>
+    const disabledPaidButton = <div className="bg-green-400 text-white p-2 rounded opacity-50">Mark as Paid</div>
+
     return (
         <div className="flex flex-col items-center bg-slate-50 pr-5">
             <div className="p-3 ml-5 min-[760px]:max-w-[850px] border-b bg-white">
@@ -97,6 +134,10 @@ export default function ViewInvoice() {
                     </div>
                     <StatusBar invoiceDue={dateDue} invoiceStatus={status} invoiceTotal={invoiceTotal} paidToDate={paidToDate} />
                     <p>Payments due within 30 days.</p>
+                    <div className="flex justify-end">
+                        {status !== 'Paid' && status !== 'Cancelled' ? paidButton : disabledPaidButton}
+                        {status !== 'Paid' && status !== "Cancelled" ? cancelButton : disabledCancelButton}
+                    </div>
                 </section>
             </div>
         </div>
