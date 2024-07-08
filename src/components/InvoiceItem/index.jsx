@@ -41,7 +41,7 @@ export default function InvoiceItem({addItem, removeItem, index, quantState, rat
                 <div className="flex">
                     <span className="flex items-center bg-gray-200 rounded rounded-r-none border border-r-0 border-gray-400 px-3">£</span>
                 </div>
-                <input onChange={rate} type="number" className="flex-grow w-px border border-gray-400 rounded rounded-l-none px-3 relative" placeholder="rate" />
+                <input onChange={rate} type="number" step=".01" className="flex-grow w-px border border-gray-400 rounded rounded-l-none px-3 relative" placeholder="rate" />
             </div>
             <p className="ml-2">£{total}</p>
             <div className="flex flex-col">
