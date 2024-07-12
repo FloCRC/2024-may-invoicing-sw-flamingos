@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react"
-
 export default function InvoiceDetails({ desc, quant, cost, subTotal, paidToDate, total }) {
 
     return (
         <div>
-            <div className="grid grid-cols-[3fr_1fr_1fr_1fr] gap-3 p-2 border-b border-slate-500">
+            <div className="grid grid-cols-[3fr_2fr_1fr_3fr] gap-3 py-1 border-b-2 md:grid-cols-[3fr_1fr_1fr_1fr]">
                 <p>{desc}</p>
-                <p>{quant}</p>
-                <p>{cost}</p>
-                <p>{subTotal}</p>
+                <p className="text-right md:text-left">{quant}</p>
+                <p className="text-right md:text-left">£{cost}</p>
+                <p className="font-bold text-right">£{subTotal}</p>
             </div>
         </div>
     )

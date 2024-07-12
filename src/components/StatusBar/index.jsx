@@ -26,32 +26,32 @@ export default function StatusBar({ invoiceStatus, invoiceDue, invoiceTotal, pai
     const totalDue = invoiceTotal - paidToDate
     const finalDue = parseFloat(totalDue).toFixed(2)
 
-    const paid = <div className="grid grid-cols-[4fr_1fr_1fr] bg-green-400 ">
+    const paid = <div className="grid grid-cols-[0fr_1fr_1fr] py-1 px-1 bg-green-400 shadow-md md:grid-cols-[4fr_1fr_1fr] md:px-0 md:pr-1">
         <p></p>
         <p className="font-bold">Total due</p>
-        <p className="mr-6 font-bold">£{finalDue}</p>
+        <p className="font-bold text-right">£{finalDue}</p>
     </div>
 
-    const cancelled = <div className="grid grid-cols-[4fr_1fr_1fr] bg-slate-400">
+    const cancelled = <div className="grid grid-cols-[0fr_1fr_1fr] py-1 px-1 bg-slate-400 shadow-md md:grid-cols-[4fr_1fr_1fr] md:px-0 md:pr-1">
         <p></p>
         <p className="font-bold">Total due</p>
-        <p className="mr-6 font-bold">£{finalDue}</p>
+        <p className="font-bold text-right">£{finalDue}</p>
     </div>
 
-    const overdue = <div className="grid grid-cols-[4fr_1fr_1fr] bg-red-400 ">
+    const overdue = <div className="grid grid-cols-[0fr_1fr_1fr] py-1 px-1 bg-red-400 shadow-md md:grid-cols-[4fr_1fr_1fr] md:px-0 md:pr-1">
         <p></p>
         <p className="font-bold">Total due</p>
-        <p className="mr-6 font-bold">£{finalDue}</p>
+        <p className="font-bold text-right">£{finalDue}</p>
     </div>
 
-    const pending = <div className="grid grid-cols-[4fr_1fr_1fr] bg-orange-400 ">
+    const pending = <div className="grid grid-cols-[0fr_1fr_1fr] py-1 px-1 bg-yellow-400 shadow-md md:grid-cols-[4fr_1fr_1fr] md:px-0 md:pr-1">
         <p></p>
         <p className="font-bold">Total due</p>
-        <p className="mr-6 font-bold">£{finalDue}</p>
+        <p className="font-bold text-right">£{finalDue}</p>
     </div>
 
     return (
-        <div className="mb-2">
+        <div className="mb-1">
 
             {invoiceStatus === 'Paid' ? paid :
                 invoiceStatus === 'Cancelled' ? cancelled :

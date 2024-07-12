@@ -31,7 +31,7 @@ export default function ViewInvoice() {
                 setPaidToDate(invoice.data.paid_to_date)
                 setDetails(invoice.data.details)
                 setStatus(invoice.data.status_name)
-                setInvoiceTotal(parseInt(invoice.data.invoice_total))
+                setInvoiceTotal(invoice.data.invoice_total)
                 setInvoiceNumber(invoice.data.invoice_id)
             })
     }, [status])
@@ -78,67 +78,67 @@ export default function ViewInvoice() {
         })
     }
 
-    const cancelButton = <button onClick={cancelInv} className="bg-red-400 text-white p-2 ml-2 rounded hover:opacity-50">Cancel Invoice</button>;
-    const disabledCancelButton = <div className="bg-red-400 text-white p-2 ml-2 rounded opacity-50">Cancel Invoice</div>;
-    const paidButton = <button onClick={markPaid} className="bg-green-400 text-white p-2 rounded hover:opacity-50">Mark as Paid</button>
+    const cancelButton = <button onClick={cancelInv} className="bg-red-400 text-white p-2 rounded shadow-md hover:opacity-50 md:ml-2">Cancel Invoice</button>;
+    const disabledCancelButton = <div className="bg-red-400 text-white p-2 rounded opacity-50 md:ml-2">Cancel Invoice</div>;
+    const paidButton = <button onClick={markPaid} className="bg-green-400 text-white p-2 rounded shadow-md hover:opacity-50">Mark as Paid</button>
     const disabledPaidButton = <div className="bg-green-400 text-white p-2 rounded opacity-50">Mark as Paid</div>
 
     return (
-        <div className="flex flex-col items-center bg-slate-50 pr-5">
-            <div className="p-3 ml-5 min-[760px]:max-w-[850px] border-b bg-white">
+        <div className="w-full mb-5 flex flex-col items-center ml-6 pr-12 md:ml-20 md:pr-40">
+            <div className="w-full py-1 max-w-[850px] border-2 bg-white md:p-3">
                 <InvoiceTitle invoiceID={invoiceNumber} />
-                <div className="flex justify-between p-3 border-b">
+                <div className="flex justify-between px-1 py-3 border-b-2 md:px-3">
                     <div className="flex flex-col ml-5">
                         <p className="font-bold">From</p>
-                        <p>SW Flamingos Ltd</p>
-                        <p>The saltflats</p>
-                        <p>Bolivia</p>
+                        <p className="text-sm md:text-base">SW Flamingos Ltd</p>
+                        <p className="text-sm md:text-base">The Saltflats</p>
+                        <p className="text-sm md:text-base">Bolivia</p>
                         <br />
                         <p className="font-bold">To</p>
-                        <p>{client}</p>
-                        <p>{address}</p>
-                        <p>{city}</p>
+                        <p className="text-sm md:text-base">{client}</p>
+                        <p className="text-sm md:text-base">{address}</p>
+                        <p className="text-sm md:text-base">{city}</p>
                     </div>
                     <div className="flex flex-col mr-5">
                         <p className="font-bold">Status</p>
-                        <StatusBox invoiceDue={dateDue} invoiceStatus={status} />
+                        <div className="md:pt-2"><StatusBox invoiceDue={dateDue} invoiceStatus={status} /></div>
                         <br />
                         <p className="font-bold">Created</p>
-                        <p>{newCreatedDate}</p>
+                        <p className="text-sm md:text-base">{newCreatedDate}</p>
                         <br />
                         <p className="font-bold">Due</p>
-                        <p>{newDueDate}</p>
+                        <p className="text-sm md:text-base">{newDueDate}</p>
                     </div>
                 </div>
-                <section className="p-3 ml-5 min-[760px]:max-w-[850px] border-b">
-                    <div className="grid grid-cols-[3fr_1fr_1fr_1fr] p-2 font-bold gap-3 border-b border-slate-500">
-                        <p>Description</p>
-                        <p>Quantity</p>
-                        <p>Rate</p>
-                        <p>Total</p>
+                <div className="px-1 py-3 mx-5 max-w-[850px] text-sm md:text-base md:px-3">
+                    <div className="grid grid-cols-[3fr_2fr_1fr_3fr] pb-2 font-bold gap-3 border-b-2 md:grid-cols-[3fr_1fr_1fr_1fr]">
+                        <p className="md:hidden">Desc.</p><p className="hidden md:block">Description</p>
+                        <p className="text-right md:hidden">Quan.</p><p className="hidden md:block">Quantity</p>
+                        <p className="text-right md:text-left">Rate</p>
+                        <p className="text-right">Total</p>
                     </div>
                     {details.map((detail, index) => {
                         return (
                             <InvoiceDetails key={index} desc={detail.description} quant={detail.quantity} cost={detail.rate} subTotal={detail.total} paidToDate={paidToDate} />
                         )
                     })}
-                    <div className="grid grid-cols-[4fr_1fr_1fr] border-b border-slate-500">
+                    <div className="grid grid-cols-[0fr_1fr_1fr] py-1 border-b-2 md:grid-cols-[4fr_1fr_1fr]">
                         <p></p>
                         <p>Total</p>
-                        <p className="mr-6 font-bold">£{invoiceTotal}</p>
+                        <p className="font-bold text-right">£{invoiceTotal}</p>
                     </div>
-                    <div className="grid grid-cols-[4fr_1fr_1fr]">
+                    <div className="grid grid-cols-[0fr_1fr_1fr] py-1 md:grid-cols-[4fr_1fr_1fr]">
                         <p></p>
-                        <p className="pr-2">Paid to date</p>
-                        <p className="mr-6 font-bold">£{paidToDate}</p>
+                        <p>Paid to date</p>
+                        <p className="font-bold text-right">£{paidToDate}</p>
                     </div>
                     <StatusBar invoiceDue={dateDue} invoiceStatus={status} invoiceTotal={invoiceTotal} paidToDate={paidToDate} />
                     <p>Payments due within 30 days.</p>
-                    <div className="flex justify-end">
+                    <div className="flex justify-between mt-2 md:mt-0 md:justify-end">
                         {status !== 'Paid' && status !== 'Cancelled' ? paidButton : disabledPaidButton}
                         {status !== 'Paid' && status !== "Cancelled" ? cancelButton : disabledCancelButton}
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     )

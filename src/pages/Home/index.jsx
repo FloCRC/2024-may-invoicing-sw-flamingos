@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import InvoiceList from "../../components/InvoiceList";
-import { useEffect } from "react";
 
 export default function Home() {
-       
+
     return (
         <div>
             <InvoiceList />

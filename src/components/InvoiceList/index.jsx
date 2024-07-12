@@ -37,7 +37,7 @@ export default function InvoiceList() {
     }
 
     return (
-        <div className="mb-2 ml-6 pr-6 flex flex-col items-center md:ml-20 md:pr-20">
+        <div className="mb-3 ml-6 pr-6 flex flex-col items-center md:ml-20 md:pr-20">
             <div className="w-full flex justify-between items-center mb-3 max-w-[850px]">
                 <div className="flex">
                     <div className="">
@@ -49,7 +49,7 @@ export default function InvoiceList() {
                             <option value="0">All</option>
                         </select>
                     </div>
-                    <div className="pl-5">
+                    <div className="pl-2 md:pl-5">
                         <select onChange={sort} className="bg-slate-50 text-blue-950 text-xs font-bold hover:opacity-50 hover:cursor-pointer md:text-base">
                             <option value="invoice_id">Sort by</option>
                             <option value="invoice_id">Invoice ID</option>

@@ -110,6 +110,5 @@ export default function NewInvoicePage() {
                 <p>{buttonDisplay}</p>
             </div>
         </div>
-
     )
 }
