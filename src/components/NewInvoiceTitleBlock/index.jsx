@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import DropdownClients from "../DropdownClients";
+import StatusBox from '../StatusBox';
 
 export default function NewInvoiceTitleBlock({ clientState }) {
 
@@ -46,7 +47,7 @@ export default function NewInvoiceTitleBlock({ clientState }) {
             <div className="pr-5 md:pr-20">
                 <div>
                     <p className="font-bold">Status</p>
-                    <div className="md:pt-2"><div className="border border-yellow-400 rounded-lg"><p className="py-1 px-3 text-yellow-400">&#x2022; Pending</p></div></div>
+                    <div className="md:pt-2"><StatusBox invoiceDue={newDueDate} invoiceStatus="Pending" /></div>
                     <br />
                     <p className="font-bold">Created</p>
                     <p className="text-sm md:text-base">{newDate}</p>
