@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function InvoiceItem({addItem, removeItem, index, quantState, rateState, descState, totalState, listLength, created}) {
+export default function InvoiceItem({ addItem, removeItem, index, quantState, rateState, descState, totalState, listLength, created }) {
 
     const [total, setTotal] = useState(0)
     const [quantityNew, setQuantityNew] = useState(0)
@@ -39,7 +39,7 @@ export default function InvoiceItem({addItem, removeItem, index, quantState, rat
     return (
         <div className="grid grid-cols-[3fr_3fr_3fr_3fr_1fr] max-w-[850px] border-b-2 mb-1 py-1 text-xs md:grid-cols-[3fr_3fr_3fr_2fr_1fr] md:text-base md:pb-2">
             <textarea onChange={desc} placeholder="description" className="h-[100px] rounded border px-3" />
-            <div className="flex"><input onChange={quantity} type="number" step="1" placeholder="quantity" className="flex flex-wrap flex-grow w-px h-10 rounded border ml-2 px-3"/></div>
+            <div className="flex"><input onChange={quantity} type="number" step="1" placeholder="quantity" className="flex flex-wrap flex-grow w-px h-10 rounded border ml-2 px-3" /></div>
             <div className="flex flex-wrap mb-4 relative h-10 ml-2">
                 <div className="flex">
                     <span className="flex items-center bg-gray-200 rounded rounded-r-none border border-r-0 px-1">£</span>

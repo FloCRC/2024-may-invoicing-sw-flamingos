@@ -52,7 +52,6 @@ export default function StatusBar({ invoiceStatus, invoiceDue, invoiceTotal, pai
 
     return (
         <div className="mb-1">
-
             {invoiceStatus === 'Paid' ? paid :
                 invoiceStatus === 'Cancelled' ? cancelled :
                     invoiceStatus === 'Pending' && dateDue < todayDateParsed ? overdue : pending

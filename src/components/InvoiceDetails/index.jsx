@@ -1,4 +1,4 @@
-export default function InvoiceDetails({ desc, quant, cost, subTotal, paidToDate, total }) {
+export default function InvoiceDetails({ desc, quant, cost, subTotal }) {
 
     return (
         <div>
