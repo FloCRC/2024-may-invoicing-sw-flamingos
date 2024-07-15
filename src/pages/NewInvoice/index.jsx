@@ -22,7 +22,7 @@ export default function NewInvoice() {
         }
     }
 
-    let megaTotal = list.reduce((carry, item) => carry + item.total, 0)
+    let megaTotal = Math.round((list.reduce((carry, item) => carry + item.total, 0) + Number.EPSILON) * 100) / 100
 
     function updateQuantity(index, quantitySum) {
         const listCopy = [...list]
@@ -108,7 +108,7 @@ export default function NewInvoice() {
                     <div className="grid grid-cols-[0fr_1fr_1fr] text-sm mx-5 py-1 px-1 bg-yellow-400 shadow-md md:grid-cols-[4fr_1fr_1fr] md:px-0 md:pr-1 md:mx-4 md:text-base">
                         <p></p>
                         <p className="font-bold">Total</p>
-                        <p className="font-bold text-right">£{list.reduce((carry, item) => carry + item.total, 0)}</p>
+                        <p className="font-bold text-right">£{megaTotal}</p>
                     </div>
                     <div className={`flex max-w-[850px] justify-end pl-5 pr-5 text-sm md:pl-0 md:mb-0 md:mt-3 md:text-base ${visibility}`}>
                         <p className="pt-2">{message}</p>

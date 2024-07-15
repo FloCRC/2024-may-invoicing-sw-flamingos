@@ -10,14 +10,14 @@ export default function InvoiceItem({ addItem, removeItem, index, quantState, ra
         const quantitySum = Number(e.target.value)
         quantState(index, quantitySum)
         setQuantityNew(quantitySum)
-        setTotal(rateNew * e.target.value)
+        setTotal(Math.round((rateNew * e.target.value + Number.EPSILON) * 100) / 100)
     }
 
     function rate(e) {
         const rateSum = Number(e.target.value)
         rateState(index, rateSum)
         setRateNew(rateSum)
-        setTotal(quantityNew * e.target.value)
+        setTotal(Math.round((quantityNew * e.target.value + Number.EPSILON) * 100) / 100)
     }
 
     function desc(e) {
