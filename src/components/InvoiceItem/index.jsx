@@ -10,14 +10,14 @@ export default function InvoiceItem({addItem, removeItem, index, quantState, rat
         const quantitySum = Number(e.target.value)
         quantState(index, quantitySum)
         setQuantityNew(quantitySum)
-        setTotal(rateNew * e.target.value)
+        setTotal((rateNew * e.target.value).toFixed(2))
     }
 
     function rate(e) {
         const rateSum = Number(e.target.value)
         rateState(index, rateSum)
         setRateNew(rateSum)
-        setTotal(quantityNew * e.target.value)
+        setTotal((quantityNew * e.target.value).toFixed(2))
     }
 
     function desc(e) {
@@ -32,16 +32,14 @@ export default function InvoiceItem({addItem, removeItem, index, quantState, rat
     useEffect(bigTotal, [total])
 
     return (
-        <div className="grid grid-cols-5 max-w-[850px] mx-2 border-b border-gray-400 mb-1">
-            <textarea onChange={desc} placeholder="description" className="h-[100px] bg-grey-lighter rounded border border-gray-400 ml-2 px-3" />
-
-            <input onChange={quantity} type="number" step="1" placeholder="quantity" className="h-10 bg-grey-lighter rounded border border-gray-400 ml-2 px-3"/>
-
+        <div className="grid grid-cols-5 max-w-[850px] border-b-2 mb-1 pt-1">
+            <textarea onChange={desc} placeholder="description" className="h-[100px] rounded border px-3" />
+            <input onChange={quantity} type="number" step="1" placeholder="quantity" className="h-10 rounded border ml-2 px-3"/>
             <div className="flex flex-wrap mb-4 relative h-10 ml-2">
                 <div className="flex">
-                    <span className="flex items-center bg-gray-200 rounded rounded-r-none border border-r-0 border-gray-400 px-3">£</span>
+                    <span className="flex items-center bg-gray-200 rounded rounded-r-none border border-r-0 px-3">£</span>
                 </div>
-                <input onChange={rate} type="number" step=".01" className="flex-grow w-px border border-gray-400 rounded rounded-l-none px-3 relative" placeholder="rate" />
+                <input onChange={rate} type="number" step=".01" className="flex-grow w-px border rounded rounded-l-none px-3 relative" placeholder="rate" />
             </div>
             <p className="ml-2">£{total}</p>
             <div className="flex flex-col">

@@ -23,17 +23,17 @@ export default function StatusBox({ invoiceStatus, invoiceDue }) {
         setTodayDateParsed(Date.parse(todaysDateFormat))
     }, [invoiceDue])
 
-    const paid = <ul className="border border-green-400 rounded-lg">
-        <li className="py-1 px-3 text-green-400">&#x2022; {invoiceStatus}</li></ul>
+    const paid = <div className="border border-green-400 rounded-lg">
+        <p className="py-1 px-3 text-green-400">&#x2022; {invoiceStatus}</p></div>
 
-    const cancelled = <ul className="border border-slate-400 rounded-lg">
-        <li className="py-1 px-3 text-slate-400">&#x2022; {invoiceStatus}</li></ul>
+    const cancelled = <div className="border border-slate-400 rounded-lg">
+        <p className="py-1 px-3 text-slate-400">&#x2022; {invoiceStatus}</p></div>
 
-    const overdue = <ul className="border border-red-400 rounded-lg">
-        <li className="py-1 px-3 text-red-400">&#x2022; Overdue</li></ul>
+    const overdue = <div className="border border-red-400 rounded-lg">
+        <p className="py-1 px-3 text-red-400">&#x2022; Overdue</p></div>
 
-    const pending = <ul className="border border-yellow-400 rounded-lg">
-        <li className="py-1 px-3 text-yellow-400">&#x2022; {invoiceStatus}</li></ul>
+    const pending = <div className="border border-yellow-400 rounded-lg">
+        <p className="py-1 px-3 text-yellow-400">&#x2022; {invoiceStatus}</p></div>
 
     return (
         <div className="mb-2">

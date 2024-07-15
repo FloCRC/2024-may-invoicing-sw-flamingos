@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ViewInvoice from "./pages/ViewInvoice";
-import NewInvoicePage from "./pages/NewInvoicePage";
+import NewInvoice from "./pages/NewInvoice";
 
 export default function App() {
 
@@ -13,7 +13,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/NewInvoice" element={<NewInvoicePage />} />
+          <Route path="/NewInvoice" element={<NewInvoice />} />
           <Route path="/viewinvoice/:invoiceid" element={<ViewInvoice />}></Route>
         </Routes>
         <Footer />

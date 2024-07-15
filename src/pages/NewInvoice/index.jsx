@@ -1,9 +1,10 @@
 import { useState } from "react";
 import InvoiceItem from "../../components/InvoiceItem";
-import NewInvoiceDetails from "../../components/NewInvoiceDetails";
+import NewInvoiceTitleBlock from "../../components/NewInvoiceTitleBlock";
 import { Link } from "react-router-dom";
+import NewInvoiceTitle from "../../components/NewInvoiceTitle";
 
-export default function NewInvoicePage() {
+export default function NewInvoice() {
 
     const [list, setList] = useState([{ quantity: 0, rate: 0, total: 0, description: '' }]);
     const [clientId, setClientId] = useState('')
@@ -65,7 +66,7 @@ export default function NewInvoicePage() {
             }
         }).then(res => {
             res.json()
-            if(res.status=== 200){
+            if (res.status === 200) {
                 setMessage(`You have successfully added your invoice`)
                 setButtonDisplay(<Link to='/'><button className="bg-gray-600 p-2 text-white rounded ml-3">Home</button></Link>)
             }
@@ -73,7 +74,7 @@ export default function NewInvoicePage() {
                 setMessage('Please complete all fields')
             )
         }).then(data => {
-            
+
         })
     }
 
@@ -82,32 +83,36 @@ export default function NewInvoicePage() {
     }
 
     return (
-        <div className="flex flex-col items-center px-5">
-            <form onSubmit={successMessage} className=" bg-white p-2">
-                <NewInvoiceDetails clientState={updateClient} />
-                <div>
-                    <div className="grid grid-cols-5 max-w-[850px] border-b border-gray-400 mb-1 pb-1 font-bold pl-4">
-                        <p>Description</p>
-                        <p>Quantity</p>
-                        <p>Rate</p>
-                        <p className="">Total</p>
-                        <p></p>
+        <div className="w-full mb-5 flex flex-col items-center ml-6 pr-12 md:ml-20 md:pr-40">
+            <div className="w-full py-1 max-w-[850px] border-2 bg-white md:p-3">
+                <NewInvoiceTitle />
+                <form onSubmit={successMessage} className="bg-white px-2">
+                    <NewInvoiceTitleBlock clientState={updateClient} />
+                    <div className="px-1 py-3 mx-5 max-w-[850px] text-sm md:text-base md:px-3">
+                        <div className="grid grid-cols-[3fr_2fr_1fr_3fr_1fr] pb-2 font-bold gap-3 border-b-2 md:mb-1 md:grid-cols-5">
+                            <p className="md:hidden">Desc.</p><p className="hidden md:block">Description</p>
+                            <p className="text-right md:hidden">Quan.</p><p className="hidden md:block">Quantity</p>
+                            <p className="text-right md:text-left">Rate</p>
+                            <p className="text-right md:text-left">Total</p>
+                            <p></p>
+                        </div>
+                        {list.map((item, index) => <div key={index}><InvoiceItem quantState={updateQuantity} rateState={updateRate} descState={updateDesc} index={index} addItem={addItem} removeItem={removeItem} totalState={updateTotal} />
+                        </div>)}
                     </div>
-                    {list.map((item, index) => <div key={index}><InvoiceItem quantState={updateQuantity} rateState={updateRate} descState={updateDesc} index={index} addItem={addItem} removeItem={removeItem} totalState={updateTotal} />
-                    </div>)}
+                    <div className="grid grid-cols-[0fr_1fr_1fr] py-1 px-1 bg-yellow-400 shadow-md md:grid-cols-[4fr_1fr_1fr] md:px-0 md:pr-1 md:mx-4">
+                        <p></p>
+                        <p className="font-bold">Total</p>
+                        <p className="font-bold text-right">£{list.reduce((carry, item) => carry + item.total, 0)}</p>
+                    </div>
+                    <div className="flex justify-end max-w-[850px] p-3">
+                        <button type='Submit' onClick={createInvoice} className="bg-green-600 p-2 text-white rounded">Create Invoice</button>
+                        <Link to="/"><button className="bg-red-600 p-2 text-white rounded ml-3">Cancel Invoice</button></Link>
+                    </div>
+                </form>
+                <div className="flex pb-2 max-w-[850px]">
+                    <p className="pt-2">{message}</p>
+                    <p>{buttonDisplay}</p>
                 </div>
-                <div className="bg-yellow-400 flex justify-end max-w-[850px] font-bold pr-5">
-                    <p className="pr-20">Total</p>
-                    <p>£{list.reduce((carry, item) => carry + item.total, 0)}</p>
-                </div>
-                <div className="flex justify-end max-w-[850px] p-3">
-                    <button type='Submit' onClick={createInvoice} className="bg-green-600 p-2 text-white rounded">Create Invoice</button>
-                    <Link to="/"><button className="bg-red-600 p-2 text-white rounded ml-3">Cancel Invoice</button></Link>
-                </div>
-            </form>
-            <div className="flex pb-2 max-w-[850px]">
-                <p className="pt-2">{message}</p>
-                <p>{buttonDisplay}</p>
             </div>
         </div>
     )

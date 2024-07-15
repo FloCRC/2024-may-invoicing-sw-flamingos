@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import InvoiceTitle from "../../components/InvoiceTitle";
 import { useEffect, useState } from "react";
-import StatusBox from "../../components/StatusBox";
+import InvoiceTitleBlock from "../../components/InvoiceTitleBlock";
 import InvoiceDetails from "../../components/InvoiceDetails";
 import StatusBar from "../../components/StatusBar";
 
@@ -87,29 +87,7 @@ export default function ViewInvoice() {
         <div className="w-full mb-5 flex flex-col items-center ml-6 pr-12 md:ml-20 md:pr-40">
             <div className="w-full py-1 max-w-[850px] border-2 bg-white md:p-3">
                 <InvoiceTitle invoiceID={invoiceNumber} />
-                <div className="flex justify-between px-1 py-3 border-b-2 md:px-3">
-                    <div className="flex flex-col ml-5">
-                        <p className="font-bold">From</p>
-                        <p className="text-sm md:text-base">SW Flamingos Ltd</p>
-                        <p className="text-sm md:text-base">The Saltflats</p>
-                        <p className="text-sm md:text-base">Bolivia</p>
-                        <br />
-                        <p className="font-bold">To</p>
-                        <p className="text-sm md:text-base">{client}</p>
-                        <p className="text-sm md:text-base">{address}</p>
-                        <p className="text-sm md:text-base">{city}</p>
-                    </div>
-                    <div className="flex flex-col mr-5">
-                        <p className="font-bold">Status</p>
-                        <div className="md:pt-2"><StatusBox invoiceDue={dateDue} invoiceStatus={status} /></div>
-                        <br />
-                        <p className="font-bold">Created</p>
-                        <p className="text-sm md:text-base">{newCreatedDate}</p>
-                        <br />
-                        <p className="font-bold">Due</p>
-                        <p className="text-sm md:text-base">{newDueDate}</p>
-                    </div>
-                </div>
+                <InvoiceTitleBlock client={client} address={address} city={city} dateDue={dateDue} status={status} createdDate={newCreatedDate} dueDate={newDueDate} />
                 <div className="px-1 py-3 mx-5 max-w-[850px] text-sm md:text-base md:px-3">
                     <div className="grid grid-cols-[3fr_2fr_1fr_3fr] pb-2 font-bold gap-3 border-b-2 md:grid-cols-[3fr_1fr_1fr_1fr]">
                         <p className="md:hidden">Desc.</p><p className="hidden md:block">Description</p>

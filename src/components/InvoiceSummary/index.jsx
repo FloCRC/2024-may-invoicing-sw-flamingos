@@ -11,7 +11,7 @@ export default function InvoiceSummary({ id, invoiceID, invoiceTotal, invoiceNam
 
     return (
         <Link to={`/viewinvoice/${id}`}>
-            <div className="text-sm relative my-2 p-4 bg-white border-2 max-w-[850px]">
+            <div className="text-sm relative my-2 p-4 bg-white border-2 max-w-[850px] hover:opacity-50">
                 <div className="flex flex-col justify-between md:flex-row md:justify-start">
                     <div className="flex items-center justify-between">
                         <p className="font-bold md:pr-5">#{invoiceID}</p>

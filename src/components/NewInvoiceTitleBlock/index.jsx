@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import DropdownClients from "../DropdownClients";
 
-export default function NewInvoiceDetails({clientState}) {
+export default function NewInvoiceTitleBlock({ clientState }) {
 
     const now = new Date();
     const next30Days = now.getTime() + 30 * 24 * 60 * 60 * 1000;
@@ -31,31 +31,28 @@ export default function NewInvoiceDetails({clientState}) {
     }, [])
 
     return (
-        <div className="flex justify-between max-w-[850px] pb-2 mb-2 border-b border-gray-400">
-            <div>
+        <div className="flex justify-between px-1 py-3 border-b-2 md:px3">
+            <div className="flex flex-col ml-5">
                 <div>
-                    <p>IO Academy</p>
-                    <p>1 Widcombe Cres</p>
-                    <p>Bath</p>
-                    <p>BA2 6AH</p>
-                </div>
-                <div>
-                    <p>To</p>
+                    <p className="font-bold">From</p>
+                    <p className="text-sm md:text-base">SW Flamingos Ltd</p>
+                    <p className="text-sm md:text-base">The Saltflats</p>
+                    <p className="text-sm md:text-base">Bolivia</p>
+                    <br />
+                    <p className="font-bold">To</p>
                     <DropdownClients clients={clients} clientState={clientState} />
                 </div>
             </div>
-            <div className="pr-20">
+            <div className="pr-5 md:pr-20">
                 <div>
-                    <p>Status</p>
-                    <ul className="border border-yellow-400 rounded-lg"><li className="py-1 px-3 text-yellow-400">&#x2022; Pending</li></ul>
-                </div>
-                <div>
-                    <p>Created</p>
-                    <p>{newDate}</p>
-                </div>
-                <div>
-                    <p>Due</p>
-                    <p>{newDueDate}</p>
+                    <p className="font-bold">Status</p>
+                    <div className="md:pt-2"><div className="border border-yellow-400 rounded-lg"><p className="py-1 px-3 text-yellow-400">&#x2022; Pending</p></div></div>
+                    <br />
+                    <p className="font-bold">Created</p>
+                    <p className="text-sm md:text-base">{newDate}</p>
+                    <br />
+                    <p className="font-bold">Due</p>
+                    <p className="text-sm md:text-base">{newDueDate}</p>
                 </div>
             </div>
         </div>
