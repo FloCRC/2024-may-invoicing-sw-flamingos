@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import StatusBox from "../StatusBox";
+import StatusIcon from "../StatusIcon";
 
 export default function InvoiceSummary({ id, invoiceID, invoiceTotal, invoiceName, invoiceStat, invoiceDue }) {
 
@@ -23,7 +23,7 @@ export default function InvoiceSummary({ id, invoiceID, invoiceTotal, invoiceNam
                     </span>
                 </div>
                 <span className="flex justify-end absolute right-4 bottom-1 pb-1">
-                    <StatusBox invoiceDue={invoiceDue} invoiceStatus={invoiceStat} />
+                    <StatusIcon invoiceDue={invoiceDue} invoiceStatus={invoiceStat} />
                     <p className="hidden text-slate-600 text-2xl pl-3 md:block"><i className="fa-solid fa-angle-right"></i></p>
                 </span>
             </div>

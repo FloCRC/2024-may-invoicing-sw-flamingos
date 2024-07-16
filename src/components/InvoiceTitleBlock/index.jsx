@@ -1,4 +1,4 @@
-import StatusBox from '../StatusBox';
+import StatusIcon from '../StatusIcon';
 
 export default function NewInvoiceTitleBlock({ client, address, city, dateDue, status, createdDate, dueDate }) {
 
@@ -17,7 +17,7 @@ export default function NewInvoiceTitleBlock({ client, address, city, dateDue, s
             </div>
             <div className="flex flex-col pr-5 md:pr-20">
                 <p className="font-bold">Status</p>
-                <div className="md:pt-2"><StatusBox invoiceDue={dateDue} invoiceStatus={status} /></div>
+                <div className="md:pt-2"><StatusIcon invoiceDue={dateDue} invoiceStatus={status} /></div>
                 <br />
                 <p className="font-bold">Created</p>
                 <p className="text-sm md:text-base">{createdDate}</p>

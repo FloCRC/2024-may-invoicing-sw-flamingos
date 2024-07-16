@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function StatusBox({ invoiceStatus, invoiceDue }) {
+export default function StatusIcon({ invoiceStatus, invoiceDue }) {
 
     const [todayDateParsed, setTodayDateParsed] = useState(0)
     const [dateDue, setDateDue] = useState(0)

@@ -42,9 +42,9 @@ export default function InvoiceItem({ addItem, removeItem, index, quantState, ra
             <div className="flex"><input onChange={quantity} type="number" step="1" placeholder="quantity" className="flex flex-wrap flex-grow w-px h-10 rounded border ml-2 px-3" /></div>
             <div className="flex flex-wrap mb-4 relative h-10 ml-2">
                 <div className="flex">
-                    <span className="flex items-center bg-gray-200 rounded rounded-r-none border border-r-0 px-1">£</span>
+                    <span className="hidden items-center bg-gray-200 rounded md:rounded-r-none border border-r-0 px-1 md:flex">£</span>
                 </div>
-                <input onChange={rate} type="number" step=".01" className="flex-grow w-px border rounded rounded-l-none px-3 relative" placeholder="rate" />
+                <input onChange={rate} type="number" step=".01" className="flex-grow w-px border rounded px-3 relative md:rounded-l-none" placeholder="rate" />
             </div>
             <p className="ml-2">£{total}</p>
             <div className="flex flex-col justify-around items-end">

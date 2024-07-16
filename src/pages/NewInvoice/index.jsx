@@ -97,10 +97,10 @@ export default function NewInvoice() {
                     <div className="px-1 py-3 mx-5 max-w-[850px] text-sm md:text-base md:px-3">
                         <div className="grid grid-cols-[3fr_3fr_3fr_3fr_1fr] pb-2 font-bold gap-3 border-b-2 md:mb-1 md:grid-cols-[3fr_3fr_3fr_2fr_1fr]">
                             <p className="md:hidden">Desc.</p><p className="hidden md:block">Description</p>
-                            <p className="text-right md:hidden">Quan.</p><p className="hidden pl-1 md:block">Quantity</p>
-                            <p className="text-right md:text-left md:pl-1">Rate</p>
-                            <p className="text-right md:text-left">Total</p>
-                            <p className="min-w-[40px]"></p>
+                            <p className="pl-2 md:hidden">Quan.</p><p className="hidden pl-1 md:block">Quantity</p>
+                            <p className="pl-3 md:pl-1">Rate</p>
+                            <p className="pl-2 text-left md:pl-0">Total</p>
+                            <p className="min-w-[40px] md:min-w-[50px]"></p>
                         </div>
                         {list.map((item, index) => <div key={index}><InvoiceItem quantState={updateQuantity} rateState={updateRate} descState={updateDesc} index={index} addItem={addItem} removeItem={removeItem} totalState={updateTotal} listLength={list.length} created={invoiceCreated} />
                         </div>)}
