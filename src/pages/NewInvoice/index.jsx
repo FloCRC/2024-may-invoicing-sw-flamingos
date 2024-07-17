@@ -87,6 +87,8 @@ export default function NewInvoice() {
     const disabledCreatebutton = <div className="bg-green-400 text-white p-2 rounded shadow-md opacity-50">Create Invoice</div>
     let visibility = ""
     !invoiceCreated ? visibility = "hidden" : visibility = "";
+    let errorVisibility = "hidden"
+    !invoiceCreated ? errorVisibility = "" : errorVisibility = "hidden";
 
     return (
         <div className="w-full mb-5 flex flex-col items-center ml-6 pr-12 md:ml-20 md:pr-40">
@@ -109,6 +111,9 @@ export default function NewInvoice() {
                         <p></p>
                         <p className="font-bold">Total</p>
                         <p className="font-bold text-right">£{megaTotal}</p>
+                    </div>
+                    <div className={`flex max-w-[850px] justify-end pl-5 pr-5 text-sm md:pl-0 md:mb-0 md:mt-3 md:text-base ${errorVisibility}`}>
+                        <p className="pt-2">{message}</p>
                     </div>
                     <div className={`flex max-w-[850px] justify-end pl-5 pr-5 text-sm md:pl-0 md:mb-0 md:mt-3 md:text-base ${visibility}`}>
                         <p className="pt-2">{message}</p>
