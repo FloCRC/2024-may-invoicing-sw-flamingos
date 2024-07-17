@@ -112,12 +112,10 @@ export default function NewInvoice() {
                         <p className="font-bold">Total</p>
                         <p className="font-bold text-right">£{megaTotal}</p>
                     </div>
-                    <div className={`flex max-w-[850px] justify-end pl-5 pr-5 text-sm md:pl-0 md:mb-0 md:mt-3 md:text-base ${errorVisibility}`}>
-                        <p className="pt-2">{message}</p>
-                    </div>
-                    <div className={`flex max-w-[850px] justify-end pl-5 pr-5 text-sm md:pl-0 md:mb-0 md:mt-3 md:text-base ${visibility}`}>
-                        <p className="pt-2">{message}</p>
-                        <p className="pt-3 hover:opacity-50 md:pt-0">{buttonDisplay}</p>
+                    <div className={`flex max-w-[850px] justify-end pl-5 pr-5 text-sm md:pl-0 md:mb-0 md:mt-3 md:text-base`}>
+                        <p className={`pt-2 md:pt-0 ${errorVisibility}`}>{message}</p>
+                        <p className={`mt-2 ml-2 ${visibility}`}>{message}</p>
+                        <p className={`pt-3 mr-2 hover:opacity-50 md:pt-0 md:mr-0 ${visibility}`}>{buttonDisplay}</p>
                     </div>
                     <div className="flex justify-end max-w-[850px] text-sm mx-5 mb-3 pt-3 md:text-base md:m-0 md:py-3 md:pr-5">
                         {!invoiceCreated ? createButton : disabledCreatebutton}
